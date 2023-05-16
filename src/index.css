@@ -1,13 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
 
 :root {
-  --main-color: #8D15B8;
+  --main-color: #283618;
+  --secondary-color: #606c38;
   --white: #F4F4F4;
   --gray: #726F6F;
   --dark-gray: #1E1E1E;
   --black: #1B191D;
 
-  --font: 'Poppins', sans-serif;
+  --font: 'Quicksand', sans-serif;
 }
 
 * {
