@@ -20,8 +20,14 @@ async function checkStatus(apiKey: string): Promise<boolean> {
   })
 
   const data: CheckStatusTypes = await response.json();
-  
-  return data.errors.length === 0 ? true : false;
+
+  if (data.errors.length === 0) {
+    sessionStorage.setItem('apiKey', apiKey)
+
+    return true
+  } else {
+    return false
+  }
 }
 
 export default checkStatus

@@ -24,7 +24,6 @@ export default function Login() {
     setApiKey('')
   }
 
-
   return (
     <main className={styles.login}>
       <img src="meuTime__logo.png" alt="Logo Meu time" className={styles.logo} />
