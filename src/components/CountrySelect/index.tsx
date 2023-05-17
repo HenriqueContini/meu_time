@@ -7,7 +7,12 @@ interface CountryApiType {
   response: CountryType[]
 }
 
-export default function CountrySelect(/* Recebe o country da home */) {
+interface CoutrySelectProps {
+  country: string
+  setCountry: (countryName: string) => void
+}
+
+export default function CountrySelect({ country, setCountry }: CoutrySelectProps) {
   const [countries, setCountries] = useState<CountryType[]>([])
   const [filteredCountries, setFilteredCountries] = useState<CountryType[]>([])
 
@@ -16,30 +21,33 @@ export default function CountrySelect(/* Recebe o country da home */) {
     setCountries(data.response)
   }
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    let string = event.target.value
-
-    if (string.length > 1) {
-      setFilteredCountries(countries.filter(c => c.name.toUpperCase().includes(string.toUpperCase())))
+  const filterCountries = (inputValue: string): void => {
+    if (inputValue.length > 1) {
+      setFilteredCountries(countries.filter(c => c.name.toUpperCase().includes(inputValue.toUpperCase())))
     } else {
       setFilteredCountries([])
     }
   }
 
   useEffect(() => {
-    /* loadData() */
+    loadData()
   }, [])
 
   return (
-    <Select name='country' label='Selecione um país:' placeholder='Insira o nome de um país' handleChange={handleChange}>
-      <ul>
+    <Select name='country'
+      label='Selecione um país:'
+      placeholder='Insira o nome de um país'
+      selectedValue={country}
+      setSelectedValue={setCountry}
+      filterFunction={filterCountries}>
+      <>
         {filteredCountries.map((c) => (
-          <li key={c.name}>
+          <li key={c.name} onClick={() => setCountry(c.name)}>
             <img src={c.flag} alt={c.name} />
             <p>{c.name}</p>
           </li>
         ))}
-      </ul>
+      </>
     </Select>
   )
 }

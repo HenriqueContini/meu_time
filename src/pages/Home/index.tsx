@@ -1,12 +1,14 @@
 import styles from './Home.module.css'
 import { useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Header from '../../components/Header'
 import CountrySelect from '../../components/CountrySelect'
 import SeasonSelect from '../../components/SeasonSelect'
 
 export default function Home() {
   const navigate = useNavigate()
+  const [country, setCountry] = useState<string>('')
+  const [season, setSeason] = useState<string>('')
 
   useEffect(() => {
     const apiKey = sessionStorage.getItem('apiKey')
@@ -22,8 +24,8 @@ export default function Home() {
       <main className={styles.home}>
         <h1 className={styles.title}>Busque por um time</h1>
         <div className={styles.filter}>
-          <CountrySelect />
-          <SeasonSelect />
+          <CountrySelect country={country} setCountry={setCountry}/>
+          <SeasonSelect season={season} setSeason={setSeason}/>
         </div>
       </main>
     </>

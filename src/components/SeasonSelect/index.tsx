@@ -6,7 +6,12 @@ interface SeasonApiType {
   response: number[]
 }
 
-export default function SeasonSelect() {
+interface SeasonSelectProps {
+  season: string
+  setSeason: (year: string) => void
+}
+
+export default function SeasonSelect({ season, setSeason }: SeasonSelectProps) {
   const [seasons, setSeasons] = useState<number[]>([])
   const [filteredSeasons, setFilteredSeasons] = useState<number[]>([])
 
@@ -15,29 +20,32 @@ export default function SeasonSelect() {
     setSeasons(data.response)
   }
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    let string = event.target.value
-
-    if (!Number.isNaN(Number(string)) && string.length > 0) {
-      setFilteredSeasons(seasons.filter(s => s.toString().includes(string)))
+  const filterSeasons = (inputValue: string): void => {
+    if (!Number.isNaN(Number(inputValue)) && inputValue.length > 0) {
+      setFilteredSeasons(seasons.filter(s => s.toString().includes(inputValue)))
     } else {
       setFilteredSeasons([])
     }
   }
 
   useEffect(() => {
-    /* loadData() */
+    loadData()
   }, [])
 
   return (
-    <Select name="season" label="Selecione a temporada:" placeholder="Insira um ano" handleChange={e => handleChange(e)}>
-      <ul>
+    <Select name="season"
+      label="Selecione a temporada:"
+      placeholder="Insira um ano"
+      selectedValue={season}
+      setSelectedValue={setSeason}
+      filterFunction={filterSeasons}>
+      <>
         {filteredSeasons.map((s, index) => (
-          <li key={index}>
+          <li key={index} onClick={() => setSeason(String(s))}>
             <p>{s}</p>
           </li>
         ))}
-      </ul>
+      </>
     </Select>
   )
 }
