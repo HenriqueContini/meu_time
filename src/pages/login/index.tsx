@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import styles from './Login.module.css'
 import checkStatus from '../../services/checkStatus';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const [apiKey, setApiKey] = useState<string>('')
   const [error, setError] = useState<boolean>(false)
+  const navigate = useNavigate()
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setApiKey(event.target.value)
@@ -17,6 +19,7 @@ export default function Login() {
 
     if (isStatusOk) {
       setError(false)
+      navigate('/home')
     } else {
       setError(true)
     }
