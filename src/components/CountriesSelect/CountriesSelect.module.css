@@ -1,0 +1,41 @@
+.countries__container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.label {
+  color: var(--white);
+  font-size: 1rem;
+}
+
+.input {
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: var(--dark-gray);
+  border: 1px solid var(--white);
+  color: var(--white);
+  text-transform: capitalize;
+}
+
+.countries {
+  background-color: var(--dark-gray);
+}
+
+.country {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  color: var(--white);
+  gap: 15px;
+  border: 1px solid var(--gray);
+}
+
+.country img {
+  max-width: 20px;
+}
+
+.country p {
+  font-size: 1rem;
+}
