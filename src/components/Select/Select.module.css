@@ -17,7 +17,6 @@
   font-size: 1rem;
   outline: none;
   padding: 10px;
-  text-transform: capitalize;
   transition: .5s;
 }
 
@@ -32,11 +31,11 @@
 .fieldset li {
   border: 1px solid var(--gray);
   color: var(--white);
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   gap: 15px;
   padding: 10px;
-  cursor: pointer;
   transition: 1s;
 }
 

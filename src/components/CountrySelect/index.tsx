@@ -7,7 +7,7 @@ interface CountryApiType {
   response: CountryType[]
 }
 
-export default function CountriesSelect(/* Recebe o country da home */) {
+export default function CountrySelect(/* Recebe o country da home */) {
   const [countries, setCountries] = useState<CountryType[]>([])
   const [filteredCountries, setFilteredCountries] = useState<CountryType[]>([])
 
@@ -27,11 +27,11 @@ export default function CountriesSelect(/* Recebe o country da home */) {
   }
 
   useEffect(() => {
-    loadData()
+    /* loadData() */
   }, [])
 
   return (
-    <Select name='country' label='Selecione um país:' handleChange={handleChange}>
+    <Select name='country' label='Selecione um país:' placeholder='Insira o nome de um país' handleChange={handleChange}>
       <ul>
         {filteredCountries.map((c) => (
           <li key={c.name}>
