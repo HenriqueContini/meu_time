@@ -29,6 +29,7 @@
 }
 
 .fieldset li {
+  align-items: center;
   border: 1px solid var(--gray);
   color: var(--white);
   cursor: pointer;

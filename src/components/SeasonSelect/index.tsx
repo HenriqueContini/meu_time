@@ -29,7 +29,7 @@ export default function SeasonSelect({ season, setSeason }: SeasonSelectProps) {
   }
 
   useEffect(() => {
-    loadData()
+    /* loadData() */
   }, [])
 
   return (
