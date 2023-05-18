@@ -8,6 +8,10 @@
   text-align: center;
 }
 
+.title span {
+  color: var(--main-color);
+}
+
 .filter {
   border-radius: 10px;
   border: 2px solid var(--dark-gray);

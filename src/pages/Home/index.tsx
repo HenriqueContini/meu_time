@@ -24,7 +24,7 @@ export default function Home() {
     <>
       <Header />
       <main className={styles.home}>
-        <h1 className={styles.title}>Busque por um time</h1>
+        <h1 className={styles.title}>Busque por um <span>time</span></h1>
         <div className={styles.filter}>
           <CountrySelect country={country} setCountry={setCountry} />
           <SeasonSelect season={season} setSeason={setSeason} />
