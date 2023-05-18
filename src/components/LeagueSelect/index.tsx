@@ -22,7 +22,7 @@ export default function LeagueSelect({ country, season, setLeague }: LeagueSelec
 
   const loadData = async (): Promise<void> => {
     const data = await api<LeagueApiType>(`leagues?country=${country}&season=${season}`)
-    data.response.map(item => setLeagues(prevLeagues => [...prevLeagues, item.league]))
+    data.response.map(item => setLeagues([...leagues, item.league]))
   }
 
   const filterLeagues = (inputValue: string): void => {

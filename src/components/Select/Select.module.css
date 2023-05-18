@@ -27,6 +27,7 @@
   outline: none;
   padding: 10px;
   transition: .5s;
+  width: 100%;
 }
 
 .input:focus {
@@ -37,9 +38,9 @@
   align-items: center;
   background-color: var(--dark-gray);
   border-bottom-right-radius: 10px;
-  border-left: none;
   border-top-right-radius: 10px;
   border: 1px solid var(--gray);
+  border-left: none;
   color: var(--white);
   cursor: pointer;
   display: flex;
@@ -55,6 +56,7 @@
 
 .clearInput:hover {
   background-color: var(--main-color);
+  border-color: var(--main-color);
 }
 
 .input:focus + .clearInput {
@@ -63,6 +65,7 @@
 
 .fieldset ul {
   background-color: var(--dark-gray);
+  border-radius: 10px;
 }
 
 .fieldset li {
@@ -79,6 +82,7 @@
 
 .fieldset li:hover {
   background-color: var(--secondary-color);
+  border-color: var(--main-color);
 }
 
 .fieldset li:first-child {
