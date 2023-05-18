@@ -14,18 +14,21 @@ async function checkStatus(apiKey: string): Promise<boolean> {
   myHeaders.append("x-rapidapi-key", apiKey);
   myHeaders.append("x-rapidapi-host", "v3.football.api-sports.io");
 
-  const response: Response = await fetch(`https://v3.football.api-sports.io/status`, {
-    method: 'GET',
-    headers: myHeaders
-  })
+  try {
+    const response: Response = await fetch(`https://v3.football.api-sports.io/status`, {
+      method: 'GET',
+      headers: myHeaders
+    })
 
-  const data: CheckStatusTypes = await response.json();
+    const data: CheckStatusTypes = await response.json();
 
-  if (data.errors.length === 0) {
-    sessionStorage.setItem('apiKey', apiKey)
-
-    return true
-  } else {
+    if (data.response.subscription.active === true) {
+      sessionStorage.setItem('apiKey', apiKey)
+      return true
+    } else {
+      return false
+    }
+  } catch (error) {
     return false
   }
 }

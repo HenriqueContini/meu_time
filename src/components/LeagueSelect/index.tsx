@@ -38,7 +38,6 @@ export default function LeagueSelect({ country, season, setLeague }: LeagueSelec
   }, [])
 
   useEffect(() => {
-    console.log('Ocorreu uma atualização')
     if (leagueName) {
       let newId = leagues.filter(l => l.name === leagueName)
       setLeague(newId[0].id.toString())
