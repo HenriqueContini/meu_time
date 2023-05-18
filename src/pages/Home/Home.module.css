@@ -17,3 +17,10 @@
   margin-top: 20px;
   padding: 10px;
 }
+
+@media (min-width: 800px) {
+  .home {
+    max-width: 80%;
+    margin-inline: auto;
+  }
+}

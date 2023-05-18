@@ -1,19 +1,28 @@
 .fieldset {
   display: flex;
   flex-direction: column;
-  gap: 15px;
 }
 
 .label {
   color: var(--white);
   font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.input__container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
 }
 
 .input {
   background-color: var(--dark-gray);
-  border-radius: 10px;
-  border: 1px solid var(--white);
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  border: 1px solid var(--gray);
   color: var(--white);
+  flex: 1;
   font-size: 1rem;
   outline: none;
   padding: 10px;
@@ -21,6 +30,34 @@
 }
 
 .input:focus {
+  border-color: var(--main-color);
+}
+
+.clearInput {
+  align-items: center;
+  background-color: var(--dark-gray);
+  border-bottom-right-radius: 10px;
+  border-left: none;
+  border-top-right-radius: 10px;
+  border: 1px solid var(--gray);
+  color: var(--white);
+  cursor: pointer;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  transition: 0.5s;
+  width: 44px;
+}
+
+.clearInput svg {
+  font-size: 1.5rem;
+}
+
+.clearInput:hover {
+  background-color: var(--main-color);
+}
+
+.input:focus + .clearInput {
   border-color: var(--main-color);
 }
 
