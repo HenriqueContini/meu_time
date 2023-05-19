@@ -3,6 +3,10 @@
 interface CheckStatusTypes {
   errors: []
   response: {
+    requests: {
+      current: number
+      limit_day: number
+    }
     subscription: {
       active: boolean
     }
@@ -22,7 +26,9 @@ async function checkStatus(apiKey: string): Promise<boolean> {
 
     const data: CheckStatusTypes = await response.json();
 
-    if (data.response.subscription.active === true) {
+    console.log(data)
+
+    if (data.response.subscription.active === true && data.response.requests.limit_day > data.response.requests.current) {
       sessionStorage.setItem('apiKey', apiKey)
       return true
     } else {
