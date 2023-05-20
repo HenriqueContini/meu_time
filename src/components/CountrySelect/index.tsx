@@ -30,7 +30,7 @@ export default function CountrySelect({ country, setCountry }: CoutrySelectProps
   }
 
   useEffect(() => {
-    /* loadData() */
+    loadData()
   }, [])
 
   return (

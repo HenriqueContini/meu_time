@@ -21,8 +21,8 @@ interface TeamApiType {
 
 export default function Home() {
   const navigate = useNavigate()
-  const [country, setCountry] = useState<string>('Brazil')
-  const [season, setSeason] = useState<string>('2022')
+  const [country, setCountry] = useState<string>('')
+  const [season, setSeason] = useState<string>('')
   const [league, setLeague] = useState<string>('')
 
   const [teams, setTeams] = useState<TeamInfoType[]>([
@@ -47,8 +47,6 @@ export default function Home() {
     if (apiKey === null) {
       navigate('/')
     }
-
-    setLeague('71')
   })
 
   useEffect(() => {
@@ -66,8 +64,6 @@ export default function Home() {
           {(country && season) ? <LeagueSelect country={country} season={season} setLeague={setLeague} /> : null}
 
           {league ? <button type='submit' className={styles.button}>Buscar</button> : null}
-
-          {/* <button type='submit' className={styles.button}>Buscar</button> */}
         </form>
 
         {teams ?

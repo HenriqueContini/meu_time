@@ -35,7 +35,7 @@ export default function LeagueSelect({ country, season, setLeague }: LeagueSelec
   }
 
   useEffect(() => {
-    /* loadData() */
+    loadData()
   }, [])
 
   useEffect(() => {

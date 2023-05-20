@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import styles from './Team.module.css'
 import { useState, useEffect } from 'react'
 import Header from '../../components/Header'
@@ -21,6 +21,7 @@ interface PlayerApiType {
 
 export default function Team() {
   const params = useParams()
+  const navigate = useNavigate()
   const [teamData, setTeamData] = useState<TeamType>()
   const [players, setPlayers] = useState<PlayerType[]>([])
   const [mostUsedLineup, setMostUsedLineup] = useState<{ formation: string, played: number }>()
@@ -37,34 +38,38 @@ export default function Team() {
   }
 
   const loadData = async (): Promise<void> => {
-    const team = await api<TeamApiType>(`teams/statistics?league=${params.league}&season=${params.season}&team=${params.team}`)
-    setTeamData(team.response)
+    try {
+      const team = await api<TeamApiType>(`teams/statistics?league=${params.league}&season=${params.season}&team=${params.team}`)
+      setTeamData(team.response)
 
-    let lineup: { formation: string, played: number }
+      let lineup: { formation: string, played: number }
 
-    team.response.lineups.forEach((item, index) => {
-      if (index === 0) {
-        lineup = item
-      } else {
-        if (item.played > lineup.played) {
+      team.response.lineups.forEach((item, index) => {
+        if (index === 0) {
           lineup = item
+        } else {
+          if (item.played > lineup.played) {
+            lineup = item
+          }
         }
-      }
 
-      setMostUsedLineup(lineup)
-    })
+        setMostUsedLineup(lineup)
+      })
 
-    const player = await api<PlayerApiType>(`players?league=${params.league}&season=${params.season}&team=${params.team}`)
-    let newPlayerArr: PlayerType[] = []
+      const player = await api<PlayerApiType>(`players?league=${params.league}&season=${params.season}&team=${params.team}`)
+      let newPlayerArr: PlayerType[] = []
 
-    player.response.map(item => newPlayerArr.push({ name: item.player.name, age: item.player.age, nationality: item.player.nationality }))
-    setPlayers(newPlayerArr)
+      player.response.map(item => newPlayerArr.push({ name: item.player.name, age: item.player.age, nationality: item.player.nationality }))
+      setPlayers(newPlayerArr)
 
-    loadGraph(team.response.goals.for)
+      loadGraph(team.response.goals.for)
+    } catch (e) {
+      navigate('/team_error')
+    }
   }
 
   useEffect(() => {
-    /* loadData() */
+    loadData()
   }, [])
 
   return (
