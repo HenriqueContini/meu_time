@@ -26,8 +26,6 @@ async function checkStatus(apiKey: string): Promise<boolean> {
 
     const data: CheckStatusTypes = await response.json();
 
-    console.log(data)
-
     if (data.response.subscription.active === true && data.response.requests.limit_day > data.response.requests.current) {
       sessionStorage.setItem('apiKey', apiKey)
       return true

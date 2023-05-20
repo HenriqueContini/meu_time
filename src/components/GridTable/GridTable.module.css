@@ -1,0 +1,28 @@
+.table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.tableHead {
+  display: grid;
+}
+
+.tableHead p {
+  background-color: var(--main-color);
+  border: 1px solid var(--gray);
+  color: var(--white);
+  padding: 5px;
+  text-align: center;
+}
+
+.tableBody {
+  display: grid;
+}
+
+.tableBody p {
+  background-color: var(--background);
+  border: 1px solid var(--gray);
+  padding: 5px;
+  text-align: center;
+}

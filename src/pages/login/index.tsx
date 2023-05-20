@@ -30,7 +30,7 @@ export default function Login() {
   return (
     <main className={styles.login}>
       <img src="meuTime__logo.png" alt="Logo Meu time" className={styles.logo} />
-      <h1 className={styles.title}>Obtenha informações do seu time favorito</h1>
+      <h1 className={styles.title}>Obtenha informações do seu <span>time</span> favorito</h1>
       <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor="api__key">Insira sua API Key</label>
         <input type="text" name="api__key" id="api__key" value={apiKey} onChange={(e) => handleChange(e)} required />

@@ -22,15 +22,16 @@ export default function LeagueSelect({ country, season, setLeague }: LeagueSelec
 
   const loadData = async (): Promise<void> => {
     const data = await api<LeagueApiType>(`leagues?country=${country}&season=${season}`)
-    data.response.map(item => setLeagues([...leagues, item.league]))
+
+    let newLeaguesArr : LeagueType[] = []
+
+    data.response.map(item => newLeaguesArr.push(item.league))
+
+    setLeagues(newLeaguesArr)
   }
 
   const filterLeagues = (inputValue: string): void => {
-    if (inputValue.length > 0) {
-      setFilteredLeagues(leagues.filter(l => l.name.toUpperCase().includes(inputValue.toUpperCase())))
-    } else {
-      setFilteredLeagues([])
-    }
+    setFilteredLeagues(leagues.filter(l => l.name.toUpperCase().includes(inputValue.toUpperCase())))
   }
 
   useEffect(() => {

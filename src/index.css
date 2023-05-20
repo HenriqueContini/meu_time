@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
 
 :root {
-  --main-color: #0582ca;
-  --secondary-color: #003554;
+  --main-color: #3A5A40;
+  --secondary-color: #283618;
+  --background: #DDDDDD;
+
   --white: #F4F4F4;
-  --gray: #726F6F;
-  --dark-gray: #1E1E1E;
-  --black: #16171C;
+  --gray: #7e7e7e;
+
+/*   --dark-gray: #1E1E1E; */
+  --black: #292929;
 
   --font: 'Quicksand', sans-serif;
 }
@@ -20,5 +23,5 @@
 }
 
 body {
-  background-color: var(--black);
+  background-color: var(--background);
 }
