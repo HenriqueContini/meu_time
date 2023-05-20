@@ -33,7 +33,6 @@ export default function Home() {
     event.preventDefault()
 
     const data = await api<TeamApiType>(`teams?country=${country}&season=${season}&league=${league}`)
-    /* const data = await api<TeamApiType>(`teams?country=Brazil&season=2022&league=71`) */
 
     let newTeamsArr: TeamInfoType[] = []
 

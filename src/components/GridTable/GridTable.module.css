@@ -20,7 +20,11 @@
   display: grid;
 }
 
-.tableBody p {
+.tableBody .row {
+  display: grid;
+}
+
+.tableBody .row p {
   background-color: var(--background);
   border: 1px solid var(--gray);
   padding: 5px;

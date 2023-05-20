@@ -29,7 +29,6 @@ export default function SeasonSelect({ season, setSeason }: SeasonSelectProps) {
   }
 
   useEffect(() => {
-    setSeasons([2019, 2020, 2021, 2022, 2023])
     /* loadData() */
   }, [])
 

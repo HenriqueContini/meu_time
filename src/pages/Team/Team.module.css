@@ -41,6 +41,35 @@
   font-weight: bold;
 }
 
+@keyframes spinning {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+  text-align: center;
+}
+
+.loading h2 {
+  color: var(--main-color);
+  font-size: 2rem;
+}
+
+.loading img {
+  animation: spinning 10s linear infinite;
+  max-width: 70px;
+}
+
 @media (min-width: 500px) {
   .banner {
     flex-direction: row;
