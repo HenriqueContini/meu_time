@@ -1,5 +1,3 @@
-// API Key: 1687c9a27e461e39db1d702bf9df57ec
-
 interface CheckStatusTypes {
   errors: []
   response: {
